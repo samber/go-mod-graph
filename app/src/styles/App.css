@@ -1,0 +1,232 @@
+/* Main App styles - base layout and utilities */
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  overflow: visible;
+}
+
+/* Flex Utilities */
+.flex-row {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.flex-row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Max Width Container */
+.max-w {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Graph Container */
+.graph-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Loading State */
+.loading-state {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
+.loading-spinner-large {
+  width: 64px;
+  height: 64px;
+  color: var(--color-accent);
+  filter: drop-shadow(0 0 8px var(--color-accent-light));
+}
+
+.loading-state-text {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  margin: 0;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Multi-ring spinner animations */
+.loading-spinner-outer {
+  animation: spin 1.2s linear infinite;
+  transform-origin: center;
+}
+
+.loading-spinner-middle {
+  animation: spin 0.9s linear infinite reverse;
+  transform-origin: center;
+}
+
+.loading-spinner-inner {
+  animation: spin 0.7s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   REACT FLOW CUSTOM STYLES
+   ============================================ */
+
+/* React Flow Canvas */
+.react-flow {
+  background-color: var(--color-bg);
+}
+
+/* React Flow Background Pattern */
+.react-flow__background {
+  background-color: var(--color-bg);
+}
+
+.react-flow__background-pattern-dots {
+  fill: var(--color-border);
+}
+
+/* React Flow Controls */
+.react-flow__controls {
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Hide the lock button */
+.react-flow__controls-button:nth-child(4) {
+  display: none !important;
+}
+
+.react-flow__controls-button {
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border-light);
+  fill: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.react-flow__controls-button:hover {
+  background-color: var(--color-bg-secondary);
+  fill: var(--color-accent);
+}
+
+.react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+
+/* React Flow MiniMap */
+.react-flow__minimap {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.react-flow__minimap-mask {
+  fill: var(--color-primary);
+  fill-opacity: 0.1;
+}
+
+.react-flow__minimap-node {
+  fill: var(--color-bg);
+  stroke: var(--color-text-tertiary);
+  stroke-width: 1;
+}
+
+/* React Flow Edges */
+.react-flow__edge-path {
+  stroke: #57534e;
+  stroke-width: 2.5;
+  opacity: 0.8;
+  transition: all var(--transition-normal);
+}
+
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: var(--color-accent);
+  stroke-width: 3.5;
+  opacity: 1;
+  filter: drop-shadow(0 2px 4px rgba(30, 64, 175, 0.2));
+}
+
+/* React Flow Edge Animated */
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
+}
+
+@keyframes dashdraw {
+  from {
+    stroke-dashoffset: 10;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* React Flow Edge Label */
+.react-flow__edge-label {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* Hide handles visually - they're still functional for edge connections */
+.react-flow__handle {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+/* React Flow Attributation (hide) */
+.react-flow__attribution {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    height: 100vh;
+  }
+
+  .react-flow__controls {
+    transform: scale(0.9);
+    transform-origin: bottom right;
+  }
+
+  .react-flow__minimap {
+    transform: scale(0.8);
+    transform-origin: bottom left;
+  }
+}

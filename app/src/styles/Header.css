@@ -1,0 +1,130 @@
+/* Header component styles */
+
+.header {
+  background-color: var(--color-primary);
+  color: #fafaf9;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  z-index: var(--z-sticky);
+}
+
+.dark .header {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.header h1 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Logo Button */
+.header-logo-button {
+  background: none;
+  border: none;
+  color: #fafaf9;
+  padding: 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.dark .header-logo-button {
+  color: var(--color-text-primary);
+}
+
+.header-logo-button:hover {
+  background-color: transparent;
+  transform: none;
+}
+
+.header-logo-button:active {
+  transform: none;
+}
+
+.header-logo-button h1 {
+  transition: color var(--transition-fast);
+}
+
+.header-logo-button:hover h1 {
+  color: rgba(250, 250, 249, 0.7);
+}
+
+.dark .header-logo-button:hover h1 {
+  color: var(--color-text-muted);
+}
+
+/* Action Buttons */
+.header .flex-row button,
+.header .flex-row a {
+  background: none;
+  border: none;
+  color: #fafaf9;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.dark .header .flex-row button,
+.dark .header .flex-row a {
+  color: var(--color-text-primary);
+}
+
+.header .flex-row button:hover,
+.header .flex-row a:hover {
+  background-color: var(--color-primary-light);
+  transform: scale(1.05);
+}
+
+.dark .header .flex-row button:hover,
+.dark .header .flex-row a:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+.header .flex-row button:active,
+.header .flex-row a:active {
+  transform: scale(0.95);
+}
+
+/* Logo styles */
+.app-logo {
+  display: block;
+  flex-shrink: 0;
+}
+
+.app-logo svg {
+  display: block;
+}
+
+.app-logo text {
+  font-family: var(--font-family-mono);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .header h1 {
+    font-size: var(--font-size-lg);
+  }
+
+  .header .max-w {
+    gap: var(--spacing-sm);
+  }
+}

@@ -1,0 +1,12 @@
+/* Main App styles - imports all component-specific CSS modules */
+
+/* Base styles */
+@import './styles/App.css';
+
+/* Component-specific styles */
+@import './styles/Header.css';
+@import './styles/Settings.css';
+@import './styles/Search.css';
+@import './styles/ReleaseSelector.css';
+@import './styles/CustomNode.css';
+@import './styles/EmptyState.css';

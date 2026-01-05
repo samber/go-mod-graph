@@ -1,0 +1,88 @@
+/* Graph Statistics component styles */
+
+.graph-stats {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  left: var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-md);
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  z-index: var(--z-sticky);
+  animation: fadeIn var(--transition-normal);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.graph-stat-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding-right: var(--spacing-md);
+  border-right: 1px solid var(--color-border-light);
+}
+
+.graph-stat-item:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.graph-stat-icon {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.graph-stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.graph-stat-value {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.graph-stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .graph-stats {
+    bottom: var(--spacing-md);
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .graph-stat-item {
+    flex: 1;
+    min-width: 80px;
+    justify-content: center;
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .graph-stat-item:not(:last-child) {
+    border-right: 1px solid var(--color-border-light);
+  }
+}

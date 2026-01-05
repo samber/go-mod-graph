@@ -1,0 +1,232 @@
+/* ============================================
+   CSS DESIGN SYSTEM - Design Tokens
+   ============================================ */
+
+:root {
+  /* Colors - Primary */
+  --color-primary: #292524;
+  --color-primary-dark: #1c1917;
+  --color-primary-light: #44403c;
+
+  /* Colors - Neutral */
+  --color-bg: #fafaf9;
+  --color-bg-secondary: #f5f5f4;
+  --color-bg-tertiary: #e7e5e4;
+  --color-border: #d6d3d1;
+  --color-border-light: #e7e5e4;
+
+  /* Colors - Text */
+  --color-text-primary: #292524;
+  --color-text-secondary: #44403c;
+  --color-text-tertiary: #78716c;
+  --color-text-muted: #a8a29e;
+
+  /* Colors - Accent */
+  --color-accent: #1e40af;
+  --color-accent-light: #dbeafe;
+  --color-accent-hover: #1e3a8a;
+
+  /* Colors - Semantic */
+  --color-success: #22c55e;
+  --color-success-bg: #dcfce7;
+  --color-warning: #f59e0b;
+  --color-warning-bg: #fef3c7;
+  --color-error: #ef4444;
+  --color-error-bg: #fef2f2;
+  --color-error-border: #fecaca;
+
+  /* Size Badge Colors */
+  --size-small-bg: #dcfce7;
+  --size-small-text: #166534;
+  --size-medium-bg: #fef9c3;
+  --size-medium-text: #854d0e;
+  --size-large-bg: #fed7aa;
+  --size-large-text: #9a3412;
+  --size-xlarge-bg: #fecaca;
+  --size-xlarge-text: #991b1b;
+  --size-xxlarge-bg: #fca5a5;
+  --size-xxlarge-text: #7f1d1d;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 0.75rem;
+  --spacing-lg: 1rem;
+  --spacing-xl: 1.25rem;
+  --spacing-2xl: 1.5rem;
+  --spacing-3xl: 2rem;
+  --spacing-4xl: 3rem;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --font-size-xs: 0.7rem;
+  --font-size-sm: 0.8rem;
+  --font-size-md: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+
+  /* Z-index */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-tooltip: 500;
+
+  /* Layout */
+  --max-width: 80rem;
+  --header-height: 60px;
+  --search-min-height: 120px;
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark {
+  /* Colors - Primary */
+  --color-primary: #e7e5e4;
+  --color-primary-dark: #d6d3d1;
+  --color-primary-light: #a8a29e;
+
+  /* Colors - Neutral */
+  --color-bg: #1c1917;
+  --color-bg-secondary: #292524;
+  --color-bg-tertiary: #44403c;
+  --color-border: #44403c;
+  --color-border-light: #57534e;
+
+  /* Colors - Text */
+  --color-text-primary: #fafaf9;
+  --color-text-secondary: #e7e5e4;
+  --color-text-tertiary: #a8a29e;
+  --color-text-muted: #78716c;
+
+  /* Colors - Accent */
+  --color-accent: #60a5fa;
+  --color-accent-light: rgba(37, 99, 235, 0.2);
+  --color-accent-hover: #93c5fd;
+
+  /* Colors - Semantic */
+  --color-success: #4ade80;
+  --color-success-bg: rgba(34, 197, 94, 0.15);
+  --color-warning: #fbbf24;
+  --color-warning-bg: rgba(245, 158, 11, 0.15);
+  --color-error: #f87171;
+  --color-error-bg: rgba(239, 68, 68, 0.15);
+  --color-error-border: rgba(239, 68, 68, 0.3);
+
+  /* Size Badge Colors */
+  --size-small-bg: rgba(34, 197, 94, 0.2);
+  --size-small-text: #4ade80;
+  --size-medium-bg: rgba(234, 179, 8, 0.2);
+  --size-medium-text: #facc15;
+  --size-large-bg: rgba(249, 115, 22, 0.2);
+  --size-large-text: #fb923c;
+  --size-xlarge-bg: rgba(248, 113, 113, 0.2);
+  --size-xlarge-text: #f87171;
+  --size-xxlarge-bg: rgba(239, 68, 68, 0.3);
+  --size-xxlarge-text: #ef4444;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}

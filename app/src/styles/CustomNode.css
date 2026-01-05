@@ -1,0 +1,111 @@
+/* Custom Node component styles */
+
+.custom-node {
+  padding: var(--spacing-md) var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-text-secondary);
+  cursor: pointer;
+  min-width: 240px;
+  max-width: 450px;
+  transition: all var(--transition-normal);
+  position: relative;
+  display: block;
+  text-decoration: none;
+  /* Ensure handles can be positioned at the edge */
+  overflow: visible;
+}
+
+.custom-node:hover {
+  border-color: var(--color-text-tertiary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+.custom-node-selected {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-light), var(--shadow-lg);
+}
+
+/* Hide handles visually but keep them functional for edge connections */
+.custom-node-handle {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+.custom-node-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.custom-node-path {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-mono);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-node-release-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+  transition: all var(--transition-fast);
+}
+
+.custom-node-release-tag:hover {
+  background-color: var(--color-accent-hover);
+  color: white;
+}
+
+.custom-node-size-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.custom-node-size-tag:hover {
+  transform: scale(1.05);
+}
+
+.custom-node-size-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.custom-node-version {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin-top: var(--spacing-xs);
+}
+
+.custom-node-link {
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+    tags:
+    branches:
+  pull_request:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Set up Go
+      uses: actions/setup-go@v6
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+
+    - name: Build
+      run: go build proxy/main.go
+
+    - name: Install frontend dependencies
+      run: cd app && npm install
+
+    - name: Build frontend
+      run: cd app && npm run build
