@@ -107,6 +107,11 @@ func proxyHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Length", resp.Header.Get("Content-Length"))
 	w.Header().Set("Content-Encoding", resp.Header.Get("Content-Encoding"))
 
+	// Add Cache-Control header unless URL contains "latest" or "list"
+	if !strings.Contains(targetURL.String(), "latest") && !strings.Contains(targetURL.String(), "list") {
+		w.Header().Set("Cache-Control", "public, max-age=3600")
+	}
+
 	// Write status code (must be after setting headers, before writing body)
 	w.WriteHeader(resp.StatusCode)
 
