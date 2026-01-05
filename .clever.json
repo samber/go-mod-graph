@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "app_id": "app_62adfec8-576c-4bd2-8868-0fc27624c4c2",
+      "org_id": "orga_d33e695e-dc55-4175-9331-7437a323de48",
+      "deploy_url": "https://push-n3-par-clevercloud-customers.services.clever-cloud.com/app_62adfec8-576c-4bd2-8868-0fc27624c4c2.git",
+      "git_ssh_url": "git+ssh://git@push-n3-par-clevercloud-customers.services.clever-cloud.com/app_62adfec8-576c-4bd2-8868-0fc27624c4c2.git",
+      "name": "GO-MOD-GRAPH-PROXY",
+      "alias": "GO-MOD-GRAPH-PROXY"
+    }
+  ]
+}

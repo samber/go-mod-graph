@@ -1,10 +1,8 @@
 // Go Module Proxy API - Basic module operations
 
 import type { GoModule } from '../types';
+import { LOCAL_PROXY_URL } from '../config';
 import { ModuleNotFoundError, ReleaseNotFoundError } from '../errors';
-
-// Local proxy server URL - configurable via GO_MOD_PROXY_URL environment variable
-const LOCAL_PROXY_URL = import.meta.env.GO_MOD_PROXY_URL || 'http://localhost:8080';
 
 const fetchFromProxy = async (proxyUrl: string, path: string): Promise<string> => {
   // Use local proxy server to bypass CORS

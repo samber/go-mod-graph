@@ -11,8 +11,7 @@ import {
   flattenDependencyTree,
 } from '../services/goProxy';
 import type { DependencyNode } from '../services/types';
-// @ts-ignore - dagre v0.8.5 doesn't have TypeScript types
-import dagre from 'dagre';
+import dagre from '@dagrejs/dagre';
 
 // Sort releases by date (descending)
 const sortReleasesByDate = (releases: string[]): string[] => {

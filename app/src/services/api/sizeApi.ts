@@ -1,7 +1,6 @@
 // Module size formatting utilities
 
-// Local proxy server URL - configurable via GO_MOD_PROXY_URL environment variable
-const LOCAL_PROXY_URL = import.meta.env.GO_MOD_PROXY_URL || 'http://localhost:8080';
+import { LOCAL_PROXY_URL } from '../config';
 
 // Fetch module size via HEAD request to .zip file
 export const getModuleSize = async (
