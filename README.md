@@ -13,7 +13,9 @@ A web-based Go module dependency visualizer that helps you explore and understan
 - 🔧 **Custom Proxy Support** - Configure custom Go module proxy for enterprise/offline use
 - 📚 **One-Click Documentation** - Click nodes to open module docs on pkg.go.dev
 
-<img width="1330" height="887" alt="image" src="https://github.com/user-attachments/assets/2acf18d5-4001-42bb-9d0a-a479f32326df" />
+<a href="https://go-mod-graph.samber.dev" title="go-mod-graph.samber.dev">
+  <img width="1330" height="887" alt="image" src="https://github.com/user-attachments/assets/2acf18d5-4001-42bb-9d0a-a479f32326df" />
+</a>
 
 ## ⛽️ Usage
 
