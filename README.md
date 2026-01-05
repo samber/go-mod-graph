@@ -19,7 +19,7 @@ A web-based Go module dependency visualizer that helps you explore and understan
 
 ## ⛽️ Usage
 
-### 📦 Development
+### Development
 
 Start both the proxy server and the frontend dev server:
 
@@ -35,13 +35,7 @@ npm run dev
 
 Open your browser and navigate to `http://localhost:5173`
 
-### 👀 Analyzing a Module
-
-1. Enter a Go module path (e.g., `github.com/stretchr/testify`)
-2. Optionally specify a version (e.g., `@v1.9.0`)
-3. Click "Analyze" to generate the dependency graph
-
-### 👷 Production Build
+### Production Build
 
 ```bash
 export VITE_GO_MOD_PROXY_URL=xxxx
