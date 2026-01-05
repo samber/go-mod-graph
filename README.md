@@ -44,7 +44,7 @@ Open your browser and navigate to `http://localhost:5173`
 ### 👷 Production Build
 
 ```bash
-export GO_MOD_PROXY_URL=xxxx
+export VITE_GO_MOD_PROXY_URL=xxxx
 export ALLOWED_ORIGINS=yyyy
 export PORT=8080
 

@@ -162,7 +162,7 @@ go-mod-graph/
 
 ## How It Works
 
-1. **Frontend** makes requests to the local Go proxy server (configurable via `GO_MOD_PROXY_URL` environment variable, defaults to `http://localhost:8080`)
+1. **Frontend** makes requests to the local Go proxy server (configurable via `VITE_GO_MOD_PROXY_URL` environment variable, defaults to `http://localhost:8080`)
 2. **Proxy Server** forwards the request to the actual Go module proxy (e.g., `proxy.golang.org`)
 3. **Proxy Server** returns the response with proper CORS headers
 4. **Frontend** visualizes the dependency tree using ReactFlow with dagre auto-layout
@@ -374,11 +374,11 @@ npm install package@latest
 ## Environment Variables
 
 ### Frontend (`app/`)
-- `GO_MOD_PROXY_URL` - Local proxy server URL (default: `http://localhost:8080`)
+- `VITE_GO_MOD_PROXY_URL` - Local proxy server URL (default: `http://localhost:8080`)
 
 Example `.env` file:
 ```bash
-GO_MOD_PROXY_URL=http://localhost:8080
+VITE_GO_MOD_PROXY_URL=http://localhost:8080
 ```
 
 ### Proxy Server (`proxy/`)
