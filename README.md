@@ -2,6 +2,8 @@
 
 A web-based Go module dependency visualizer that helps you explore and understand the dependency tree of any Go module.
 
+🌐 **Try it live:** [go-mod-graph.samber.dev](https://go-mod-graph.samber.dev)
+
 ## 🚀 Features
 
 - ⚡ **Interactive Dependency Graph** - Interactive, zoomable dependency visualization
@@ -10,6 +12,8 @@ A web-based Go module dependency visualizer that helps you explore and understan
 - 📊 **Module Weights** - Optional size display with color-coded badges
 - 🔧 **Custom Proxy Support** - Configure custom Go module proxy for enterprise/offline use
 - 📚 **One-Click Documentation** - Click nodes to open module docs on pkg.go.dev
+
+<img width="1330" height="887" alt="image" src="https://github.com/user-attachments/assets/2acf18d5-4001-42bb-9d0a-a479f32326df" />
 
 ## ⛽️ Usage
 
