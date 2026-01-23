@@ -66,12 +66,38 @@ function App() {
     localStorage.setItem(STORAGE_KEYS.PROXY_URL, proxyUrl);
   }, [proxyUrl]);
 
+  // Read URL parameters on mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const modParam = params.get('mod');
+    const versionParam = params.get('version');
+
+    if (modParam) {
+      const combinedInput = versionParam ? `${modParam}@${versionParam}` : modParam;
+      setModuleInput(combinedInput);
+      if (versionParam) {
+        setSelectedVersion(versionParam);
+        loadGraph(combinedInput, versionParam);
+      }
+    }
+  }, []); // Run once on mount
+
   // Extract version from module input and move to selector
   useEffect(() => {
     const { release } = parseModuleInput(moduleInput);
     if (release !== selectedRelease) {
       setSelectedVersion(release);
     }
+  }, [moduleInput, selectedRelease, parseModuleInput]);
+
+  // Sync URL with state changes (without adding to history)
+  useEffect(() => {
+    const { path, release } = parseModuleInput(moduleInput);
+    const newUrl = path
+      ? `?mod=${path}${release ? `&version=${release}` : ''}`
+      : window.location.pathname;
+    window.history.replaceState({}, '', newUrl);
   }, [moduleInput, selectedRelease, parseModuleInput]);
 
   // Load versions when module path changes (without version)
@@ -89,6 +115,7 @@ function App() {
     setModuleInput('');
     setSelectedVersion(null);
     clearGraph();
+    window.history.replaceState({}, '', window.location.pathname); // Clear URL params
   }, [setModuleInput, clearGraph]);
 
   const handleSubmit = (e: React.FormEvent) => {
