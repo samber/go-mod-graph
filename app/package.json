@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@dagrejs/dagre": "^1.1.8",
-    "@types/dagre": "^0.7.54",
-    "lucide-react": "^0.562.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.0",
-    "reactflow": "^11.11.4"
+      "@posthog/react": "^1.9.0",
+      "@types/dagre": "^0.7.54",
+      "lucide-react": "^0.562.0",
+      "posthog-js": "^1.369.2",
+      "react": "^19.2.4",
+      "react-dom": "^19.2.0",
+      "reactflow": "^11.11.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

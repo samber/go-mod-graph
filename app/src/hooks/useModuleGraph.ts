@@ -12,6 +12,7 @@ import {
 } from '../services/goProxy';
 import type { DependencyNode } from '../services/types';
 import dagre from '@dagrejs/dagre';
+import { usePostHog } from '@posthog/react';
 
 // Sort releases by date (descending)
 const sortReleasesByDate = (releases: string[]): string[] => {
@@ -92,6 +93,7 @@ const layoutNodes = (
 };
 
 export function useModuleGraph({ proxyUrl, includeWeights }: UseModuleGraphOptions): UseModuleGraphResult {
+  const posthog = usePostHog();
   const [releases, setReleases] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -208,6 +210,14 @@ export function useModuleGraph({ proxyUrl, includeWeights }: UseModuleGraphOptio
       setNodes(layoutedNodes);
       setEdges(flowEdges);
 
+      posthog?.capture('graph_loaded', {
+        module_path: path,
+        release: finalVersion || 'latest',
+        node_count: layoutedNodes.length,
+        edge_count: flowEdges.length,
+        include_weights: includeWeights,
+      });
+
       console.log(`Loaded ${layoutedNodes.length} dependencies for ${path}@${finalVersion || 'latest'}`);
 
       focusOnTopNodeRef.current = false;
@@ -216,7 +226,13 @@ export function useModuleGraph({ proxyUrl, includeWeights }: UseModuleGraphOptio
       if (e instanceof Error && e.name === 'AbortError') {
         return;
       }
-      setError(e instanceof Error ? e.message : 'Failed to load module');
+      const errorMessage = e instanceof Error ? e.message : 'Failed to load module';
+      posthog?.capture('graph_load_failed', {
+        error_message: errorMessage,
+        error_type: e instanceof Error ? e.constructor.name : 'UnknownError',
+      });
+      posthog?.captureException(e instanceof Error ? e : new Error(errorMessage));
+      setError(errorMessage);
       setNodes([]);
       setEdges([]);
     } finally {
@@ -226,7 +242,7 @@ export function useModuleGraph({ proxyUrl, includeWeights }: UseModuleGraphOptio
         abortControllerRef.current = null;
       }
     }
-  }, [proxyUrl, includeWeights, releases, setNodes, setEdges, loadVersions]);
+  }, [proxyUrl, includeWeights, releases, setNodes, setEdges, loadVersions, posthog]);
 
   const clearGraph = useCallback(() => {
     // Cancel any ongoing request

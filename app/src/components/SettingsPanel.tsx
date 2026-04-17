@@ -1,5 +1,6 @@
 // Settings Panel component
 import { Globe, RotateCcw, Check, Scale } from 'lucide-react';
+import { usePostHog } from '@posthog/react';
 
 type SettingsPanelProps = {
   proxyUrl: string;
@@ -16,6 +17,8 @@ export const SettingsPanel = ({
   includeWeights,
   onIncludeWeightsChange,
 }: SettingsPanelProps) => {
+  const posthog = usePostHog();
+
   const handleReset = () => {
     onProxyUrlChange('https://proxy.golang.org');
   };
@@ -34,7 +37,10 @@ export const SettingsPanel = ({
               <input
                 type="url"
                 value={proxyUrl}
-                onChange={(e) => onProxyUrlChange(e.target.value)}
+                onChange={(e) => {
+                  posthog?.capture('proxy_url_changed', { proxy_url: e.target.value });
+                  onProxyUrlChange(e.target.value);
+                }}
                 placeholder="https://proxy.golang.org"
                 className="settings-input"
               />
@@ -69,7 +75,10 @@ export const SettingsPanel = ({
                 <input
                   type="checkbox"
                   checked={includeWeights}
-                  onChange={(e) => onIncludeWeightsChange(e.target.checked)}
+                  onChange={(e) => {
+                    posthog?.capture('weights_toggled', { enabled: e.target.checked });
+                    onIncludeWeightsChange(e.target.checked);
+                  }}
                 />
                 <span className="toggle-slider"></span>
                 <span className="toggle-label">Display weights</span>

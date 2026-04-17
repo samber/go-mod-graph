@@ -19,9 +19,11 @@ import {
 import { useModuleGraph } from './hooks';
 import { useModuleInput } from './hooks/useModuleInput';
 import { useDarkMode } from './hooks/useDarkMode';
+import { usePostHog } from '@posthog/react';
 import './App.css';
 
 function App() {
+  const posthog = usePostHog();
   // Dark mode hook
   const { isDark, toggleDarkMode } = useDarkMode();
   // Settings state using localStorage hooks
@@ -120,10 +122,16 @@ function App() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const { path, release } = parseModuleInput(moduleInput);
+    posthog?.capture('module_analyzed', {
+      module_path: path,
+      release: release || selectedRelease || 'latest',
+    });
     loadGraph(moduleInput, selectedRelease);
   };
 
   const handleExampleClick = (modulePath: string) => {
+    posthog?.capture('example_clicked', { module_path: modulePath });
     setModuleInput(modulePath);
     setSelectedVersion(null);
     // Load the graph immediately with the provided path
@@ -131,9 +139,13 @@ function App() {
   };
 
   const handleReleaseSelect = (release: string) => {
+    const { path } = parseModuleInput(moduleInput);
+    posthog?.capture('release_selected', {
+      module_path: path,
+      release,
+    });
     setSelectedVersion(release);
     // Update the input to include the version
-    const { path } = parseModuleInput(moduleInput);
     if (path && path.includes('.')) {
       const updatedInput = `${path}@${release}`;
       setModuleInput(updatedInput);
@@ -195,7 +207,10 @@ function App() {
     <div className="app">
       {/* Header */}
       <Header
-        onSettingsToggle={() => setShowSettings(!showSettings)}
+        onSettingsToggle={() => {
+          if (!showSettings) posthog?.capture('settings_opened');
+          setShowSettings(!showSettings);
+        }}
         onHomeClick={handleHomeClick}
         isDarkMode={isDark}
         onDarkModeToggle={toggleDarkMode}
